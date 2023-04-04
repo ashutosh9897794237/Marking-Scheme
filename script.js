@@ -15,6 +15,7 @@ let degreeInput = document.querySelector('#Degree');
  //document.write(d.toDateString());
 
  //var id = new EventCounts();
+// deleteBtn.addEventListener('click', () => {deleteHome.innerText = "Delete"}
 
 
 
@@ -34,7 +35,16 @@ btnAdd.addEventListener('click', () => {
                 <td>${gpa}</td>
                 <td>${degree}</td>
                 
-                    <td><button class="deleteBtn">return</button>/<button class="deleteBtn">Delete</button></td>
+                    <td><button class="deleteButn">return</button>/<button class="deleteBtn">Delete</button></td>
                 </tr>`;
     table.innerHTML += template;
 });
+
+function onDeleteRow(e){
+    if(!e.target.classList.contains("deleteBtn")){
+        return;
+    }
+    const btn = e.target;
+    btn.closest("tr").remove();
+}
+    table.addEventListener('click', onDeleteRow);

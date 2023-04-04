@@ -35,7 +35,7 @@ btnAdd.addEventListener('click', () => {
                 <td>${gpa}</td>
                 <td>${degree}</td>
                 
-                    <td><button class="deleteButn">return</button>/<button class="deleteBtn">Delete</button></td>
+                    <td><button class="editButn">Edit</button>/<button class="deleteBtn">Delete</button></td>
                 </tr>`;
     table.innerHTML += template;
 });
@@ -46,5 +46,15 @@ function onDeleteRow(e){
     }
     const btn = e.target;
     btn.closest("tr").remove();
+
+}
+function onEditRow(e){
+    if(!e.target.classList.contains("editButn")){
+        return;
+    }
+    const btn = e.target;
+    btn.edit("tr").edit_row();
+
 }
     table.addEventListener('click', onDeleteRow);
+    table.addEventListener('click', onEditRow);
